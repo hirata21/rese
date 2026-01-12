@@ -1,0 +1,15 @@
+src/.env
+src/.env.*
+!.env.example
+
+# local history (VSCode)
+.history/
+
+# logs
+src/storage/logs/
+src/storage/*.key
+
+# dependencies
+src/vendor/
+src/node_modules/
+EOF
