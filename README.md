@@ -87,7 +87,7 @@ rese は、飲食店の検索・予約・決済・来店管理をオンライン
 
 
 ## ER図
-![ER図](./images/er.png)
+(./images/er.png)
 
 ## 環境構築
 
