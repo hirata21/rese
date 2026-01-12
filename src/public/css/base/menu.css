@@ -1,0 +1,151 @@
+/* =====================================
+   メニュー画面
+===================================== */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+/* is-open が付いたら表示 */
+.menu-overlay.is-open {
+    display: flex;
+}
+
+/* ===== モーダルの中身（全画面） ===== */
+.menu-box {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== メニューリンク/ボタン 共通 ===== */
+.menu-item {
+    display: block;
+    margin: 10px 0;
+    font-size: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #2563ff;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* formの余白をゼロに（menu-itemと同じ幅/高さに邪魔しない） */
+.menu-form {
+    margin: 0;
+    display: block;
+}
+
+/* ===== ログアウト（フォームボタン用） ===== */
+.logout-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    appearance: none;
+
+    -webkit-appearance: none;
+}
+
+.logout-btn.menu-item {
+    color: inherit;
+    text-align: inherit;
+    color: #2563ff;
+}
+
+.menu-item:focus-visible {
+    outline: 3px solid rgba(41, 98, 255, 0.35);
+    outline-offset: 6px;
+    border-radius: 6px;
+}
+
+/* ===== × ボタン===== */
+.close-btn {
+    position: absolute;
+    top: 32px;
+    left: 40px;
+
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+
+    border: none;
+    background-color: #2962ff;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.close-btn span {
+    display: none;
+}
+
+.close-btn::before,
+.close-btn::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 1px;
+}
+
+.close-btn::before {
+    transform: rotate(45deg);
+}
+
+.close-btn::after {
+    transform: rotate(-45deg);
+}
+
+.close-btn:hover {
+    opacity: 0.9;
+}
+
+.close-btn:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* =====================================
+   レスポンシブ（768px以下）
+===================================== */
+@media (max-width: 768px) {
+    .close-btn {
+        top: 24px;
+        left: 24px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .close-btn::before,
+    .close-btn::after {
+        width: 16px;
+        height: 2px;
+    }
+
+    .menu-item {
+        font-size: 22px;
+        margin: 12px 0;
+    }
+}

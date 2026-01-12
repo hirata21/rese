@@ -1,0 +1,133 @@
+/* =========================
+   QRコード照合ページ
+   ========================= */
+
+.checkin-wrap {
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+/* タイトル行（左：h1 / 右：戻るボタン） */
+.checkin-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.checkin-title {
+    font-size: 20px;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ボタン：このページ内で完結させるためスコープを絞る */
+.checkin-wrap .btn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #111827;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.checkin-wrap .btn:hover {
+    opacity: 0.92;
+}
+
+.checkin-wrap .btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* 実行ボタン（修飾子） */
+.checkin-wrap .btn--primary {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #fff;
+}
+
+/* フラッシュ */
+.checkin-flash {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+/* 入力グループ */
+.checkin-group {
+    margin-bottom: 12px;
+}
+
+.checkin-label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.checkin-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: #fff;
+}
+
+.checkin-input:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+.checkin-help {
+    margin: 6px 0 0;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.checkin-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* アクション（右寄せ） */
+.checkin-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+/* =====================================
+   レスポンシブ（768px以下）
+===================================== */
+@media (max-width: 768px) {
+    .checkin-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .checkin-actions {
+        justify-content: stretch;
+    }
+
+    .checkin-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

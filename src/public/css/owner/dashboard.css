@@ -1,0 +1,276 @@
+/* =====================================
+   オーナーダッシュボード
+===================================== */
+.owner-admin {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: calc(100vh - 80px);
+}
+
+.owner-side {
+    background: #fff;
+    border-right: 1px solid #e5e7eb;
+    padding: 18px;
+}
+
+.owner-side__brand {
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.owner-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.owner-nav__item {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #111827;
+}
+
+.owner-nav__item:hover {
+    background: #f3f4f6;
+}
+
+.owner-nav__item.is-active {
+    background: #111827;
+    color: #fff;
+}
+
+.owner-main {
+    padding: 24px;
+}
+
+.owner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.owner-title {
+    font-size: 22px;
+    margin: 0;
+}
+
+.owner-sub {
+    margin-top: 6px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* ログアウト */
+.owner-logout {
+    margin: 0;
+}
+
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #f8fafc;
+}
+
+.logout-btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+.owner-flash {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    padding: 10px 12px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.owner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.owner-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.owner-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.owner-card__title {
+    font-size: 16px;
+    margin: 0;
+}
+
+.owner-card__text {
+    margin: 0 0 14px;
+    color: #374151;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.owner-card__actions {
+    display: flex;
+    gap: 10px;
+}
+
+.owner-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+}
+
+.owner-badge.is-ok {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    color: #065f46;
+}
+
+.owner-badge.is-warn {
+    background: #fffbeb;
+    border-color: #fcd34d;
+    color: #92400e;
+}
+
+.owner-badge.is-info {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+}
+
+/* ボタン */
+.btn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.btn--primary {
+    background: #2563eb;
+    color: #fff;
+}
+
+.btn.btn--primary:hover {
+    filter: brightness(0.95);
+}
+
+.btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* =====================================
+   レスポンシブ（768px以下）
+===================================== */
+@media (max-width: 768px) {
+
+    .owner-admin {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .owner-side {
+        border-right: none;
+        border-bottom: 1px solid #e5e7eb;
+        padding: 14px 16px;
+    }
+
+    .owner-side__brand {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .owner-nav {
+        gap: 6px;
+    }
+
+    .owner-nav__item {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .owner-main {
+        padding: 16px;
+    }
+
+    .owner-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .owner-title {
+        font-size: 18px;
+    }
+
+    .owner-sub {
+        font-size: 12px;
+    }
+
+    .owner-logout {
+        width: 100%;
+    }
+
+    .logout-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .owner-flash {
+        font-size: 13px;
+        margin-bottom: 14px;
+    }
+
+    .owner-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .owner-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .owner-card__actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 12px 14px;
+        width: 100%;
+    }
+}

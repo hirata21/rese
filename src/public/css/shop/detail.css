@@ -1,0 +1,267 @@
+/* =====================================
+   店舗詳細ページ
+===================================== */
+.detail-page {
+    margin-top: 40px;
+    padding: 0 40px 40px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+/* 左カラム */
+.shop-column {
+    padding-left: 0;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #000;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.back-text {
+    font-weight: bold;
+}
+
+.back-icon {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.back-icon:hover {
+    background: #f2f2f2;
+}
+
+.shop-image-wrap img {
+    width: 90%;
+    height: auto;
+    display: block;
+}
+
+.shop-tags {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #000;
+}
+
+.shop-description {
+    margin-top: 24px;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* 右側：予約フォーム */
+.reserve-column {
+    background: #2563ff;
+    border-radius: 8px;
+    padding: 32px 40px 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-top: -85px;
+    box-sizing: border-box;
+}
+
+.reserve-title {
+    margin: 0 0 24px;
+    font-size: 24px;
+}
+
+.reserve-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+.reserve-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.reserve-label {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* 日付入力欄だけ横幅を縮める */
+.reserve-field input[type="date"] {
+    width: 160px;
+}
+
+.reserve-field input,
+.reserve-field select {
+    border-radius: 4px;
+    border: none;
+    padding: 8px 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* select の矢印をカスタム画像に変更 */
+.reserve-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("/icons/arrow-down.png");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+
+    padding-right: 40px;
+}
+
+.error-message {
+    margin: 6px 0 0;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.reserve-summary {
+    margin-top: 16px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+    width: 460px;
+    box-sizing: border-box;
+}
+
+.reserve-summary .row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    margin-bottom: 8px;
+}
+
+.reserve-summary .row span:first-child {
+    width: 70px;
+}
+
+.reserve-submit {
+    margin-top: auto;
+    width: calc(100% + 80px);
+    margin-left: -40px;
+    margin-right: -40px;
+
+    border: none;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 0;
+    font-size: 16px;
+    background: #0047ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* =====================================
+   レスポンシブ（768px以下）
+===================================== */
+@media (max-width: 768px) {
+
+    .detail-page {
+        margin-top: 24px;
+        padding: 0 16px 24px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        box-sizing: border-box;
+    }
+
+    .back-link {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .back-icon {
+        width: 26px;
+        height: 26px;
+        padding: 6px;
+        border-radius: 8px;
+    }
+
+    .shop-image-wrap img {
+        width: 100%;
+    }
+
+    .shop-tags {
+        margin-top: 16px;
+        font-size: 13px;
+    }
+
+    .shop-description {
+        margin-top: 16px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .reserve-column {
+        margin-top: 0;
+        padding: 18px 16px 0;
+        border-radius: 10px;
+    }
+
+    .reserve-title {
+        font-size: 18px;
+        margin-bottom: 14px;
+    }
+
+    .reserve-form {
+        gap: 12px;
+    }
+
+    .reserve-field input[type="date"] {
+        width: 100%;
+    }
+
+    .reserve-field input,
+    .reserve-field select {
+        font-size: 16px;
+        /* iOSズーム対策 */
+        padding: 12px 12px;
+        border-radius: 6px;
+    }
+
+    .reserve-field select {
+        background-position: right 12px center;
+        background-size: 16px;
+        padding-right: 40px;
+    }
+
+    .reserve-summary {
+        width: 100%;
+        margin-top: 12px;
+        padding: 14px 14px;
+        border-radius: 10px;
+        font-size: 13px;
+    }
+
+    .reserve-summary .row {
+        gap: 16px;
+        margin-bottom: 6px;
+    }
+
+    .reserve-summary .row span:first-child {
+        width: 64px;
+    }
+
+    .reserve-submit {
+        width: calc(100% + 32px);
+        margin-left: -16px;
+        margin-right: -16px;
+        padding: 14px 0;
+        font-size: 16px;
+        border-radius: 0 0 10px 10px;
+    }
+}

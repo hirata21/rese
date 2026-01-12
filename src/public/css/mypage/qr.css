@@ -1,0 +1,130 @@
+/* =========================
+   来店用QRコードページ
+   ========================= */
+
+.qr-wrap {
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+
+    /* ★ 中央寄せの要 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* タイトル */
+.qr-title {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    line-height: 1.4;
+    text-align: center;
+    /* ★ 中央 */
+}
+
+/* カード */
+.qr-card {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    box-sizing: border-box;
+
+    /* 中身も中央基準 */
+    text-align: center;
+}
+
+/* 説明文 */
+.qr-text {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #111;
+}
+
+/* QR表示（完全中央） */
+.qr-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+}
+
+/* SVG/IMG のはみ出し防止 */
+.qr-code svg,
+.qr-code img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 予約情報 */
+.qr-info {
+    font-size: 13px;
+    color: #555;
+    margin: 8px 0 0;
+    line-height: 1.6;
+}
+
+.qr-dev {
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #111;
+
+    background: #f9fafb;
+    border: 1px dashed #e5e7eb;
+    padding: 8px;
+    border-radius: 8px;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* =====================================
+   レスポンシブ（768px以下）
+===================================== */
+@media (max-width: 768px) {
+    .qr-wrap {
+        max-width: 100%;
+        margin: 24px auto;
+        padding: 0 16px;
+    }
+
+    .qr-title {
+        font-size: 18px;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+
+    .qr-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .qr-text {
+        font-size: 13px;
+        margin-bottom: 6px;
+        line-height: 1.6;
+    }
+
+    .qr-code {
+        padding: 20px 0;
+    }
+
+    .qr-info {
+        font-size: 12px;
+        margin-top: 6px;
+        line-height: 1.6;
+    }
+
+    .qr-dev {
+        font-size: 11px;
+        padding: 8px;
+        border-radius: 10px;
+    }
+}

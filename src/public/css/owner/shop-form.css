@@ -1,0 +1,242 @@
+/* =====================================
+   オーナー店舗情報フォームページ
+===================================== */
+.owner-main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+/* タイトル行（左：h1 / 右：戻るボタン） */
+.owner-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* タイトル */
+.owner-title {
+    font-size: 22px;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ヘッダー右ボタン */
+.owner-head__btn {
+    white-space: nowrap;
+}
+
+/* =========================
+   共通ボタン（ページ内にスコープ）
+========================= */
+.owner-main .btn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #111827;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.owner-main .btn:hover {
+    opacity: 0.9;
+}
+
+.owner-main .btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+.owner-main .btn.btn--primary {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+}
+
+/* =========================
+   フラッシュメッセージ
+========================= */
+.owner-flash {
+    padding: 10px 16px;
+    margin-bottom: 16px;
+    background: #e6ffed;
+    border: 1px solid #b2f5ea;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* =========================
+   フォーム
+========================= */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+/* 必須 */
+.required {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+/* input / textarea / select（同じ見た目） */
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-sizing: border-box;
+    background: #fff;
+    font-size: 14px;
+    color: #111827;
+}
+
+/* textarea */
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* select：ブラウザ差を抑えてinput風に */
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 44px;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, #6b7280 50%),
+        linear-gradient(135deg, #6b7280 50%, transparent 50%),
+        linear-gradient(to right, transparent, transparent);
+    background-position:
+        calc(100% - 18px) 50%,
+        calc(100% - 12px) 50%,
+        0 0;
+    background-size:
+        6px 6px,
+        6px 6px,
+        100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* focus（統一） */
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.form-group input[type="file"]:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* file input */
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fff;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* エラー */
+.error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* =========================
+   画像プレビュー
+========================= */
+.current-image {
+    margin-top: 10px;
+}
+
+.current-image__label {
+    font-size: 13px;
+    color: #555;
+    margin: 0 0 6px;
+}
+
+.current-image__img {
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    border: 1px solid #e5e7eb;
+}
+
+/* 画像比較（横並び） */
+.image-compare {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.image-compare .current-image {
+    flex: 1;
+    max-width: 260px;
+}
+
+/* =========================
+   ボタンエリア（下）
+========================= */
+.owner-actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    align-items: center;
+}
+
+/* =====================================
+   レスポンシブ（768px以下）
+===================================== */
+@media (max-width: 768px) {
+    .owner-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .owner-head__btn {
+        width: 100%;
+    }
+
+    .owner-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .owner-main .btn {
+        width: 100%;
+    }
+
+    .image-compare {
+        flex-direction: column;
+    }
+
+    .image-compare .current-image {
+        max-width: 100%;
+    }
+}

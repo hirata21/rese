@@ -1,0 +1,141 @@
+/* =========================
+   Base
+========================= */
+
+/* ページ全体の背景を統一 */
+body,
+main {
+    background-color: #f1f1f1;
+}
+
+/* =========================
+   Header
+========================= */
+
+.site-header {
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 0;
+    display: block;
+}
+
+/* ヘッダーの1行：横幅100% + flex */
+.site-header-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 32px 40px 0;
+    background-color: #f1f1f1;
+    justify-content: flex-start;
+}
+
+/* 左側（ロゴ） */
+.site-header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* 右側（Logoutなど）：常に右寄せ */
+.site-header-right {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.site-header-right form {
+    margin: 0;
+}
+
+/* =========================
+   Logo
+========================= */
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: #2962ff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+}
+
+/* 3本ラインの親 */
+.logo-lines {
+    position: relative;
+    width: 22px;
+    height: 16px;
+}
+
+/* 1本目（短い：11px） */
+.logo-lines::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11px;
+    border-top: 2px solid #fff;
+}
+
+/* 2本目（長い：22px） */
+.logo-lines::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 22px;
+    border-top: 2px solid #fff;
+    transform: translateY(-50%);
+}
+
+/* 3本目（一番短い：5px） */
+.logo-lines .bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    border-top: 2px solid #fff;
+}
+
+/* テキスト */
+.logo-text {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2962ff;
+}
+
+/* クリック時の枠消し（!important を削除しても成立する構造に） */
+.logo-link {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.logo-link:focus,
+.logo-link:active {
+    outline: none;
+    box-shadow: none;
+}
+
+/* =====================================
+   レスポンシブ（768px以下）
+===================================== */
+@media (max-width: 768px) {
+    .site-header-row {
+        padding: 16px 16px 0;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 12px;
+    }
+
+    .logo-text {
+        font-size: 24px;
+    }
+}
