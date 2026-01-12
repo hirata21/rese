@@ -13,3 +13,6 @@ src/storage/*.key
 src/vendor/
 src/node_modules/
 EOF
+
+# mysql data (docker)
+docker/mysql/data/

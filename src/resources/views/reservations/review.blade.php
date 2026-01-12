@@ -14,7 +14,7 @@
         <div class="review-shop-header">
             @php
             $shopImage = $reservation->shop->image_path
-            ? asset('storage/' . $reservation->shop->image_path)
+            ? asset($reservation->shop->image_path)
             : asset('images/noimage.jpg');
             @endphp
 

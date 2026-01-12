@@ -21,7 +21,7 @@
         {{-- 画像 --}}
         @php
         $image = $shop->image_path
-        ? asset('storage/' . $shop->image_path)
+        ? asset($shop->image_path)
         : asset('images/noimage.jpg');
         @endphp
 
