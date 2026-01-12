@@ -1,18 +1,45 @@
+# =========================
+# Laravel / App secrets
+# =========================
 src/.env
 src/.env.*
+
+# allow example env
+!src/.env.example
 !.env.example
 
-# local history (VSCode)
+# =========================
+# Local history (VSCode)
+# =========================
 .history/
 
-# logs
+# =========================
+# Logs / runtime
+# =========================
 src/storage/logs/
 src/storage/*.key
+src/storage/framework/cache/
+src/storage/framework/sessions/
+src/storage/framework/views/
 
-# dependencies
+# =========================
+# Dependencies / build
+# =========================
 src/vendor/
 src/node_modules/
-EOF
+src/public/hot/
+src/public/storage
+src/.phpunit.result.cache
 
-# mysql data (docker)
+# =========================
+# OS / Editor junk
+# =========================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# =========================
+# Docker / MySQL data (DO NOT COMMIT)
+# =========================
 docker/mysql/data/
