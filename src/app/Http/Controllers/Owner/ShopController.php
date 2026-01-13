@@ -53,7 +53,7 @@ class ShopController extends Controller
         $data['owner_id'] = $ownerId;
 
         if ($request->hasFile('image')) {
-            $data['image_path'] = $request->file('image')->store('shops', 'public');
+            $data['image_path'] = $request->file('image')->storePublicly('shops');
         }
 
         // ✅ 店舗作成
@@ -111,10 +111,10 @@ class ShopController extends Controller
 
         if ($request->hasFile('image')) {
             if (!empty($shop->image_path)) {
-                Storage::disk('public')->delete($shop->image_path);
+                Storage::delete($shop->image_path);
             }
 
-            $data['image_path'] = $request->file('image')->store('shops', 'public');
+            $data['image_path'] = $request->file('image')->storePublicly('shops');
         }
 
         $shop->update($data);

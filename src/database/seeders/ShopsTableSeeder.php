@@ -25,7 +25,7 @@ class ShopsTableSeeder extends Seeder
 
         $seedDir = resource_path('seed_images/shops');
 
-        $publicDisk = Storage::disk('public');
+        $disk = Storage::disk(config('filesystems.default'));
 
         $shops = [
             [
@@ -175,8 +175,8 @@ class ShopsTableSeeder extends Seeder
             $fileName = basename($relativePath);
             $from = $seedDir . DIRECTORY_SEPARATOR . $fileName;
 
-            if (File::exists($from) && ! $publicDisk->exists($relativePath)) {
-                $publicDisk->put($relativePath, File::get($from));
+            if (File::exists($from) && ! $disk->exists($relativePath)) {
+                $disk->put($relativePath, File::get($from), ['visibility' => 'public']);
             }
 
             Shop::updateOrCreate(
