@@ -16,14 +16,8 @@
             <span class="back-text">{{ $shop->name }}</span>
         </a>
 
-        @php
-        $image = $shop->image_path
-        ? asset($shop->image_path)
-        : asset('images/noimage.jpg');
-        @endphp
-
         <div class="shop-image-wrap">
-            <img src="{{ $image }}" alt="{{ $shop->name }}">
+            <img src="{{ shop_image_url($shop) }}" alt="{{ $shop->name }}">
         </div>
 
         <p class="shop-tags">#{{ $shop->area }} #{{ $shop->genre }}</p>
@@ -52,8 +46,7 @@
 
             $defaultNumber = (int) old('number', $reservation->number_of_people);
 
-            $defaultCourseId = old('courseщеorurse_id', $reservation->course_id);
-            // ↑もしコピペ時に文字化けしたらここは 'course_id' に戻してOK
+            $defaultCourseId = old('course_id', $reservation->course_id);
 
             $defaultCourseName = optional($reservation->course)->name ?? '未設定';
             $defaultCoursePrice = optional($reservation->course)->price ?? $reservation->price;

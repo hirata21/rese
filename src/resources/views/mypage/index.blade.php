@@ -249,12 +249,7 @@
             @forelse($favoriteShops as $shop)
             <article class="shop-card">
                 <div class="shop-card-image">
-                    @php
-                    $image = $shop->image_path
-                    ? asset($shop->image_path)
-                    : asset('images/noimage.jpg');
-                    @endphp
-                    <img src="{{ $image }}" alt="{{ $shop->name }}">
+                    <img src="{{ shop_image_url($shop) }}" alt="{{ $shop->name }}">
                 </div>
 
                 <div class="shop-card-body">

@@ -18,15 +18,9 @@
             <span class="back-text">{{ $shop->name }}</span>
         </a>
 
-        {{-- 画像 --}}
-        @php
-        $image = $shop->image_path
-        ? asset($shop->image_path)
-        : asset('images/noimage.jpg');
-        @endphp
-
+        {{-- 画像（helpers 経由で統一） --}}
         <div class="shop-image-wrap">
-            <img src="{{ $image }}" alt="{{ $shop->name }}">
+            <img src="{{ shop_image_url($shop) }}" alt="{{ $shop->name }}">
         </div>
 
         {{-- ハッシュタグ的な表示 --}}
@@ -191,7 +185,6 @@
 
         if (!inputDate || !inputTime) return;
 
-        // 生成済みの option をバックアップ（24h×00/30）
         const allTimeOptions = [...inputTime.options].map(opt => ({
             value: opt.value,
             label: opt.textContent
@@ -199,19 +192,16 @@
 
         const pad2 = n => String(n).padStart(2, "0");
 
-        // ローカルの「今日」を YYYY-MM-DD で返す
         const getTodayStr = () => {
             const d = new Date();
             return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
         };
 
-        // "HH:MM" -> 分
         const toMinutes = (t) => {
             const [h, m] = t.split(":").map(Number);
             return h * 60 + m;
         };
 
-        // 「次の30分刻み」を分で返す（例: 14:01→14:30, 14:31→15:00）
         const getThresholdMinutes = () => {
             const d = new Date();
             const h = d.getHours();
@@ -228,13 +218,11 @@
 
             const prevValue = inputTime.value;
 
-            // 今日だけ「過去(=threshold未満)」を削除
             const threshold = getThresholdMinutes();
             const nextOptions = isToday ?
                 allTimeOptions.filter(o => toMinutes(o.value) >= threshold) :
                 allTimeOptions;
 
-            // 作り直し
             inputTime.innerHTML = "";
 
             if (nextOptions.length === 0) {
@@ -250,12 +238,10 @@
                     inputTime.appendChild(opt);
                 });
 
-                // 以前の選択が残っていれば維持、なければ先頭
                 const canKeep = nextOptions.some(o => o.value === prevValue);
                 inputTime.value = canKeep ? prevValue : nextOptions[0].value;
             }
 
-            // プレビューも更新
             if (previewTime) previewTime.textContent = inputTime.value || "--:--";
         };
 
@@ -276,14 +262,12 @@
             previewPrice.textContent = price ? `${Number(price).toLocaleString()}円` : "-";
         };
 
-        // 初期プレビュー
         if (previewDate) previewDate.textContent = inputDate.value;
         if (previewNumber && inputNumber) previewNumber.textContent = inputNumber.value + "人";
 
         rebuildTimeOptions();
         updateCoursePreview();
 
-        // イベント
         inputDate.addEventListener("change", () => {
             if (previewDate) previewDate.textContent = inputDate.value;
             rebuildTimeOptions();

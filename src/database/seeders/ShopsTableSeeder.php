@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ShopsTableSeeder extends Seeder
 {
@@ -20,6 +22,10 @@ class ShopsTableSeeder extends Seeder
                 'role'     => 'owner',
             ]
         );
+
+        $seedDir = resource_path('seed_images/shops');
+
+        $publicDisk = Storage::disk('public');
 
         $shops = [
             [
@@ -164,15 +170,25 @@ class ShopsTableSeeder extends Seeder
             ],
         ];
 
-        foreach ($shops as $shop) {
-            Shop::create([
-                'name'        => $shop['name'],
-                'area'        => $shop['area'],
-                'genre'       => $shop['genre'],
-                'owner_id'    => $owner->id,          // ★ 全店舗を同じオーナーに紐付け
-                'description' => $shop['description'],
-                'image_path'  => $shop['image_path'], // ★ 画像
-            ]);
+        foreach ($shops as $data) {
+            $relativePath = $data['image_path'];
+            $fileName = basename($relativePath);
+            $from = $seedDir . DIRECTORY_SEPARATOR . $fileName;
+
+            if (File::exists($from) && ! $publicDisk->exists($relativePath)) {
+                $publicDisk->put($relativePath, File::get($from));
+            }
+
+            Shop::updateOrCreate(
+                ['name' => $data['name']],
+                [
+                    'area'        => $data['area'],
+                    'genre'       => $data['genre'],
+                    'owner_id'    => $owner->id,
+                    'description' => $data['description'],
+                    'image_path'  => $relativePath,
+                ]
+            );
         }
     }
 }

@@ -56,12 +56,7 @@
         <div class="card">
 
             {{-- 画像 --}}
-            @php
-            $image = $shop->image_path
-            ? asset($shop->image_path)
-            : asset('images/noimage.jpg');
-            @endphp
-            <img src="{{ $image }}" alt="{{ $shop->name }}">
+            <img src="{{ shop_image_url($shop) }}" alt="{{ $shop->name }}">
 
             <div class="card-body">
                 <h2 class="card-title">{{ $shop->name }}</h2>

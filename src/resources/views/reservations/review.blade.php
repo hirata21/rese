@@ -12,14 +12,9 @@
 
         {{-- 店舗情報ヘッダー --}}
         <div class="review-shop-header">
-            @php
-            $shopImage = $reservation->shop->image_path
-            ? asset($reservation->shop->image_path)
-            : asset('images/noimage.jpg');
-            @endphp
 
             <div class="shop-image">
-                <img src="{{ $shopImage }}" alt="{{ $reservation->shop->name }}">
+                <img src="{{ shop_image_url($reservation->shop) }}" alt="{{ $reservation->shop->name }}">
             </div>
 
             <div class="shop-info">

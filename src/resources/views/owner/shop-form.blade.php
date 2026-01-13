@@ -94,7 +94,7 @@
                 <div class="current-image">
                     <p class="current-image__label">現在の画像</p>
                     <img
-                        src="{{ asset($shop->image_path) }}"
+                        src="{{ shop_image_url($shop) }}"
                         alt="現在の店舗画像"
                         class="current-image__img">
                 </div>
