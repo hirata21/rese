@@ -12,8 +12,8 @@ rese は、飲食店の検索・予約・決済・来店管理をオンライン
 外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持ちたい。
 飲食店の予約業務を効率化し、利用者にとってもスムーズで安心な予約体験を提供することを目的として開発しました。
 
-### ■ 商品一覧（店舗一覧）画面
-![店舗一覧画面](docs/shop_list.png)
+### ■ 店舗一覧画面
+![店舗一覧画面](./images/店舗一覧.png)
 
 ## アプリケーションURL
 
@@ -220,29 +220,29 @@ chmod -R ug+rwx storage bootstrap/cache
 ※ 値は各自の環境に合わせて設定してください。
 
 アプリケーション
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=http://35.78.207.37
+- APP_ENV=production
+- APP_DEBUG=false
+- APP_URL=http://35.78.207.37
 
 データベース
-DB_CONNECTION=mysql
-DB_HOST=your-rds-endpoint
-DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_db_user
-DB_PASSWORD=your_db_password
+- DB_CONNECTION=mysql
+- DB_HOST=your-rds-endpoint
+- DB_PORT=3306
+- DB_DATABASE=your_database_name
+- DB_USERNAME=your_db_user
+- DB_PASSWORD=your_db_password
 
 ストレージ（S3）
-FILESYSTEM_DISK=s3
-AWS_ACCESS_KEY_ID=your-access-key
-AWS_SECRET_ACCESS_KEY=your-secret-key
-AWS_DEFAULT_REGION=ap-northeast-1
-AWS_BUCKET=your-s3-bucket-name
-AWS_URL=https://your-s3-bucket.s3.ap-northeast-1.amazonaws.com
+- FILESYSTEM_DISK=s3
+- AWS_ACCESS_KEY_ID=your-access-key
+- AWS_SECRET_ACCESS_KEY=your-secret-key
+- AWS_DEFAULT_REGION=ap-northeast-1
+- AWS_BUCKET=your-s3-bucket-name
+- AWS_URL=https://your-s3-bucket.s3.ap-northeast-1.amazonaws.com
 
 Stripe（決済）
-STRIPE_KEY=your_stripe_public_key
-STRIPE_SECRET=your_stripe_secret_key
+- STRIPE_KEY=your_stripe_public_key
+- STRIPE_SECRET=your_stripe_secret_key
 
 
 ## 開発用ログインアカウント
