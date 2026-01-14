@@ -155,95 +155,125 @@ rese は、飲食店の検索・予約・決済・来店管理をオンライン
 
 ### Docker ビルド
 
-1.リポジトリをクローン
+1. ターミナルを開き、下記コードを実行し、リポジトリをクローン
+```
 git clone https://github.com/hirata21/rese.git
+```
 
-2.DockerDesktop アプリを立ち上げる
+2. DockerDesktop アプリを立ち上げる
 
-3.docker-compose up -d --build
+3. プロジェクトフォルダに移動して Docker を起動
+```
+cd rese
+docker-compose up -d --build
+```
 
 ### Laravel 環境構築
 
-1.docker-compose exec php bash
+1. PHPコンテナに入る
+```
+docker-compose exec php bash
+```
 
-2.composer install
+2. 依存ライブラリをインストール
+```
+ composer install
+```
 
-3.「.env.example」ファイルを 「.env」ファイルに命名を変更。
-cp .env.example .env
+3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。
+```
+ cp .env.example .env
+```
 
-4..env に以下の環境変数を追加
+4. .env に以下の環境変数を追加
 
-データベース
-- DB_CONNECTION=mysql
-- DB_HOST=mysql
-- DB_PORT=3306
-- DB_DATABASE=laravel_db
-- DB_USERNAME=laravel_user
-- DB_PASSWORD=laravel_pass
+ ```データベース
+ - DB_CONNECTION=mysql
+ - DB_HOST=mysql
+ - DB_PORT=3306
+ - DB_DATABASE=laravel_db
+ - DB_USERNAME=laravel_user
+ - DB_PASSWORD=laravel_pass
+ ```
 
-メール（開発環境：Mailhog）
-- MAIL_MAILER=smtp
-- MAIL_HOST=mailhog
-- MAIL_PORT=1025
-- MAIL_USERNAME=null
-- MAIL_PASSWORD=null
-- MAIL_ENCRYPTION=null
-- MAIL_FROM_ADDRESS=no-reply@example.test
-- MAIL_FROM_NAME="${APP_NAME}"
+ ```メール（開発環境：Mailhog）
+ - MAIL_MAILER=smtp
+ - MAIL_HOST=mailhog
+ - MAIL_PORT=1025
+ - MAIL_USERNAME=null
+ - MAIL_PASSWORD=null
+ - MAIL_ENCRYPTION=null
+ - MAIL_FROM_ADDRESS=no-reply@example.test
+ - MAIL_FROM_NAME="${APP_NAME}"
+ ```
 
-ストレージ（開発環境）
-- FILESYSTEM_DISK=public
+ ```ストレージ（開発環境）
+ - FILESYSTEM_DISK=public
+ ```
 
-Stripe（決済）
-- STRIPE_KEY=your_stripe_public_key
-- STRIPE_SECRET=your_stripe_secret_key
-※ Stripeのキーは 各自のStripeダッシュボードで取得した値 を設定してください。
+ ```Stripe（決済）
+ - STRIPE_KEY=your_stripe_public_key
+ - STRIPE_SECRET=your_stripe_secret_key
+ ```
+ ※ Stripeのキーは 各自のStripeダッシュボードで取得した値 を設定してください。
 
-5.アプリケーションキーの作成
+5. アプリケーションキーの作成
+```
 php artisan key:generate
+```
 
-6.マイグレーションの実行
+6. マイグレーションの実行
+```
 php artisan migrate
+```
 
-7.シーディングの実行
+7. シーディングの実行
+```
 php artisan db:seed
+```
 
-8.ストレージリンクの作成
+8. ストレージリンクの作成
+```
 php artisan storage:link
+```
 
-9.権限（必要なとき）
+9. 権限（必要なとき）
+```
 chown -R www-data:www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
-
+```
 
 ## 本番環境（AWS .env 設定）
 ※ 値は各自の環境に合わせて設定してください。
 
-アプリケーション
+```アプリケーション
 - APP_ENV=production
 - APP_DEBUG=false
 - APP_URL=http://35.78.207.37
+```
 
-データベース
+```データベース
 - DB_CONNECTION=mysql
 - DB_HOST=your-rds-endpoint
 - DB_PORT=3306
 - DB_DATABASE=your_database_name
 - DB_USERNAME=your_db_user
 - DB_PASSWORD=your_db_password
+```
 
-ストレージ（S3）
+```ストレージ（S3）
 - FILESYSTEM_DISK=s3
 - AWS_ACCESS_KEY_ID=your-access-key
 - AWS_SECRET_ACCESS_KEY=your-secret-key
 - AWS_DEFAULT_REGION=ap-northeast-1
 - AWS_BUCKET=your-s3-bucket-name
 - AWS_URL=https://your-s3-bucket.s3.ap-northeast-1.amazonaws.com
+```
 
-Stripe（決済）
+```Stripe（決済）
 - STRIPE_KEY=your_stripe_public_key
 - STRIPE_SECRET=your_stripe_secret_key
-
+```
 
 ## 開発用ログインアカウント
 
@@ -255,17 +285,12 @@ email: admin@example.com
 password: admin123
 
 ### オーナー
-- name: オーナー1
-- email: owner1@example.com
-- password: owner123
 
-- name: オーナー2
-- email: owner2@example.com
-- password: owner123
-
-- name: オーナー3
-- email: owner3@example.com
-- password: owner123
+| 名前     | メールアドレス          | パスワード |
+|----------|-------------------------|------------|
+| オーナー1 | owner1@example.com | owner123   |
+| オーナー2 | owner2@example.com | owner123   |
+| オーナー3 | owner3@example.com | owner123   |
 
 ### 一般ユーザー
 ユーザーは **user1〜user10** を用意しています。
@@ -276,36 +301,66 @@ password: admin123
 
 ## PHPUnit テストについて
 
-//テスト用データベースの作成
+1. テスト用データベースの作成
+ ```
+ docker-compose exec mysql bash
+ ```
 
-docker-compose exec mysql bash
+ ```MySQL にログインします。パスワードはrootと入力
+ mysql -u root -p
+ ```
 
-mysql -u root -p
+ ```ログイン後、テスト用のデータベースを作成します。
+ create database test_database;
+ ```
 
-//パスワードはrootと入力
+2. env.testingの作成
 
-create database test_database;
+ ```PHPコンテナに入る
+ docker-compose exec php bash
+ ```
 
-//.env.testingの作成
+ ```.env をコピーして、テスト用の設定ファイルを作成します
+ cp .env .env.testing
+ ```
 
-docker-compose exec php bash
+3. env.testing を編集
+ ```アプリケーション
+ APP_ENV=test
+ ```
 
-cp .env .env.testing
+ ```データベース（テスト用）
+ DB_DATABASE=test_database
+ DB_USERNAME=root
+ DB_PASSWORD=root
+ ```
 
-APP_ENV=test
+ ```メール（Mailhog）
+ MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=no-reply@example.test
+MAIL_FROM_NAME="${APP_NAME}"
+ ```
 
-DB_DATABASE=test_database
+4. テスト用のアプリケーションキーを生成
+ ```
+ php artisan key:generate --env=testing
+ ```
 
-DB_USERNAME=root
-
-DB_PASSWORD=root
-
-php artisan key:generate --env=testing
-
-php artisan config:clear
-
+5. 設定キャッシュをクリア
+ ```
+ php artisan config:clear
+ ```
+6. テスト用データベースを初期化
+ ```
 php artisan migrate:fresh --env=testing
+ ```
 
-php artisan test
-
-※.env.testingにもmailhogの設定をしてください。
+7. テストを実行
+ ```
+ php artisan test
+ ```
