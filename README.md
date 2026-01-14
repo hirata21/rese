@@ -246,13 +246,15 @@ chmod -R ug+rwx storage bootstrap/cache
 ## 本番環境（AWS .env 設定）
 ※ 値は各自の環境に合わせて設定してください。
 
-```アプリケーション
+アプリケーション
+```
 - APP_ENV=production
 - APP_DEBUG=false
 - APP_URL=http://35.78.207.37
 ```
 
-```データベース
+データベース
+```
 - DB_CONNECTION=mysql
 - DB_HOST=your-rds-endpoint
 - DB_PORT=3306
@@ -261,7 +263,8 @@ chmod -R ug+rwx storage bootstrap/cache
 - DB_PASSWORD=your_db_password
 ```
 
-```ストレージ（S3）
+ストレージ（S3）
+```
 - FILESYSTEM_DISK=s3
 - AWS_ACCESS_KEY_ID=your-access-key
 - AWS_SECRET_ACCESS_KEY=your-secret-key
@@ -270,7 +273,8 @@ chmod -R ug+rwx storage bootstrap/cache
 - AWS_URL=https://your-s3-bucket.s3.ap-northeast-1.amazonaws.com
 ```
 
-```Stripe（決済）
+Stripe（決済）
+```
 - STRIPE_KEY=your_stripe_public_key
 - STRIPE_SECRET=your_stripe_secret_key
 ```
@@ -306,36 +310,42 @@ password: admin123
  docker-compose exec mysql bash
  ```
 
- ```MySQL にログインします。パスワードはrootと入力
+ MySQL にログインします。パスワードはrootと入力
+ ```
  mysql -u root -p
  ```
 
- ```ログイン後、テスト用のデータベースを作成します。
+ ログイン後、テスト用のデータベースを作成します。
+ ```
  create database test_database;
  ```
 
 2. env.testingの作成
-
- ```PHPコンテナに入る
+ PHPコンテナに入る
+ ```
  docker-compose exec php bash
  ```
 
- ```.env をコピーして、テスト用の設定ファイルを作成します
+ .env をコピーして、テスト用の設定ファイルを作成します
+ ```
  cp .env .env.testing
  ```
 
 3. env.testing を編集
- ```アプリケーション
+ アプリケーション
+ ```
  APP_ENV=test
  ```
 
- ```データベース（テスト用）
+ データベース（テスト用）
+ ```
  DB_DATABASE=test_database
  DB_USERNAME=root
  DB_PASSWORD=root
  ```
 
- ```メール（Mailhog）
+ メール（Mailhog）
+ ```
  MAIL_MAILER=smtp
 MAIL_HOST=mailhog
 MAIL_PORT=1025
